@@ -15,7 +15,7 @@ const CreateCategory = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-        const {data} = await axios.post('/api/v1/category/create-category',{
+        const {data} = await axios.post('https://ecommerce-mern-backend-cv10.onrender.com/api/v1/category/create-category',{
           name,
         });
         if( data?.success){
@@ -32,7 +32,7 @@ const CreateCategory = () => {
   // get all category
   const getAllCategroy = async () => {
     try {
-      const {data} = await axios.get('/api/v1/category/get-category');
+      const {data} = await axios.get('https://ecommerce-mern-backend-cv10.onrender.com/api/v1/category/get-category');
       if(data?.success){
         setCategories(data?.category);
       }
@@ -49,7 +49,7 @@ const CreateCategory = () => {
   const handleUpdate = async (e) => {
     e.preventDefault();
     try {
-      const {data} = await axios.put(`/api/v1/category/update-category/${selected._id}`,{name:updateName})
+      const {data} = await axios.put(`https://ecommerce-mern-backend-cv10.onrender.com/api/v1/category/update-category/${selected._id}`,{name:updateName})
       if(data.success){
         toast.success(`${updateName} is updated`);
         selected(null)
@@ -65,7 +65,7 @@ const CreateCategory = () => {
   // delete category
   const handleDelete = async (pid) => {
     try {
-      const {data} = await axios.delete(`/api/v1/category/delete-category/${pid}`);
+      const {data} = await axios.delete(`https://ecommerce-mern-backend-cv10.onrender.com/api/v1/category/delete-category/${pid}`);
       if(data.success){
         toast.success(`category is deleted`);
         getAllCategroy()
